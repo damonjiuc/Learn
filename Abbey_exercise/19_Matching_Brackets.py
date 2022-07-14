@@ -26,36 +26,13 @@ def test(tested):
         if tested[i] in open:
             brackets.append(tested[i])
         elif tested[i] in close:
-            brackets.append(tested[i])
-            if len(brackets) < 2:
+            if len(brackets) == 0:
                 return 0
-            elif brackets[-1] == close[0]:
-                if brackets[-2] == open[0]:
-                    brackets.pop(-1)
-                    brackets.pop(-1)
-                else:
+            prev = brackets.pop()
+            for cur in range(len(open)):
+                if prev == open[cur] and tested[i] != close[cur]:
                     return 0
-            elif brackets[-1] == close[1]:
-                if brackets[-2] == open[1]:
-                    brackets.pop(-1)
-                    brackets.pop(-1)
-                else:
-                    return 0
-            elif brackets[-1] == close[2]:
-                if brackets[-2] == open[2]:
-                    brackets.pop(-1)
-                    brackets.pop(-1)
-                else:
-                    return 0
-            elif brackets[-1] == close[3]:
-                if brackets[-2] == open[3]:
-                    brackets.pop(-1)
-                    brackets.pop(-1)
-                else:
-                    return 0
-    if len(brackets) == 0:
-        return 1
-    else:
-        return 0
+    return int(len(brackets) == 0)
+
 for i in range(n):
     print(test(mas[i]), end=' ')
