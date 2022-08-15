@@ -19,6 +19,16 @@ def choise_sort(A):
             if A[k] < A[top]:
                 A[top], A[k] = A[k], A[top]
 
+def choise_sort_2(A):
+    n = len(A)
+    for i in range(n - 1):
+        max_n = A[0]
+        max_n_i = 0
+        for j in range(n - i):
+            if A[j] > max_n:
+                max_n = A[j]
+                max_n_i = j
+        A[n - i - 1], A[max_n_i] = max_n, A[n - i - 1]
 
 
 def bubble_sort(A):
